@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "59800000000"; // Reemplaza con el número real, ej: 59899123456
+const WHATSAPP_NUMBER = "59893551242";
 
 const MESSAGES = {
   customer: "Hola, necesito ayuda con un problema en casa.",
