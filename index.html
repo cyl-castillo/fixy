@@ -5,13 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Fixy te conecta con plomeros, electricistas, cerrajeros y más en Ciudad de la Costa para resolver urgencias del hogar en minutos."
+      content="Fixy te ayuda a resolver urgencias del hogar en Montevideo. Describe tu problema por WhatsApp y te ayudamos a encontrar un proveedor confiable rápido."
     />
+    <meta
+      name="keywords"
+      content="Fixy, plomero Montevideo, electricista Montevideo, cerrajero Montevideo, urgencias del hogar, reparaciones hogar, servicios barometricos"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Fixy" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <meta property="og:locale" content="es_UY" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fixy" />
+    <meta property="og:title" content="Fixy | Soluciones urgentes para tu hogar" />
+    <meta
+      property="og:description"
+      content="Describe tu problema por WhatsApp y Fixy te ayuda a encontrar plomeros, electricistas, cerrajeros y más en Montevideo."
+    />
+    <meta property="og:url" content="https://fixy-uy.github.io/" />
+    <meta property="og:image" content="https://fixy-uy.github.io/og-image.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Fixy, soluciones urgentes para tu hogar en Montevideo" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fixy | Soluciones urgentes para tu hogar" />
+    <meta
+      name="twitter:description"
+      content="Describe tu problema por WhatsApp y Fixy te ayuda a encontrar ayuda confiable en Montevideo."
+    />
+    <meta name="twitter:image" content="https://fixy-uy.github.io/og-image.svg" />
+
     <title>Fixy | Soluciones urgentes para tu hogar</title>
+    <link rel="canonical" href="https://fixy-uy.github.io/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -27,6 +62,7 @@
         <nav class="main-nav" aria-label="Navegación principal">
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#servicios">Servicios</a>
+          <a href="#confianza">Confianza</a>
           <a href="#proveedores">Proveedores</a>
         </nav>
 
@@ -36,7 +72,7 @@
           data-wa="customer"
           aria-label="Solicitar ayuda por WhatsApp"
         >
-          Solicitar ayuda
+          Pedir ayuda
         </a>
       </div>
     </header>
@@ -45,35 +81,53 @@
       <section class="hero section">
         <div class="container hero-grid">
           <div class="hero-content">
-            <p class="eyebrow">Ayuda urgente para el hogar en Ciudad de la Costa</p>
+            <p class="eyebrow">Urgencias del hogar en Montevideo</p>
             <h1>Describe tu problema. Fixy encuentra la solución.</h1>
             <p class="hero-subtitle">
-              Comenzamos en Ciudad de la Costa para resolver urgencias del hogar
-              en minutos, con plan de expansión al resto del país.
+              Encuentra plomeros, electricistas, cerrajeros y más en minutos.
             </p>
+            <p class="hero-support">
+              Escríbenos por WhatsApp, cuéntanos qué pasó y te ayudamos a encontrar
+              un proveedor confiable para resolverlo rápido.
+            </p>
+
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#" data-wa="customer">
+              <a class="btn btn-primary btn-large" href="#" data-wa="customer">
                 Solicitar ayuda por WhatsApp
               </a>
-              <a class="btn btn-secondary" href="#" data-wa="provider">Soy proveedor</a>
+              <a class="btn btn-secondary btn-large" href="#proveedores">
+                Soy proveedor
+              </a>
             </div>
+
+            <ul class="hero-proof" aria-label="Beneficios principales">
+              <li>Respuesta rápida por WhatsApp</li>
+              <li>Proveedores para urgencias reales</li>
+              <li>Atención simple, humana y directa</li>
+            </ul>
           </div>
 
           <aside class="request-card" aria-label="Ejemplo de solicitud en Fixy">
-            <p class="card-label">Solicitud en curso</p>
+            <div class="card-topline">
+              <p class="card-label">Solicitud en curso</p>
+              <span class="card-badge">WhatsApp</span>
+            </div>
             <h2>“Se rompió la ducha y sale agua sin parar”</h2>
+            <p class="request-intro">
+              Fixy identifica el problema y acelera la conexión con el proveedor adecuado.
+            </p>
             <ul>
               <li>
-                <span>🔎 Servicio detectado</span>
+                <span>🔎 Categoría detectada</span>
                 <strong>Plomería</strong>
               </li>
               <li>
-                <span>⏱️ Llegada estimada</span>
-                <strong>30–45 min</strong>
+                <span>⚡ Prioridad</span>
+                <strong>Urgente</strong>
               </li>
               <li>
-                <span>✅ Proveedor encontrado</span>
-                <strong>Disponible cerca de ti</strong>
+                <span>✅ Siguiente paso</span>
+                <strong>Buscar proveedor confiable</strong>
               </li>
             </ul>
           </aside>
@@ -81,92 +135,95 @@
       </section>
 
       <section class="section" id="como-funciona">
-        <div class="container">
-          <h2>Cómo funciona</h2>
-          <div class="steps-grid">
-            <article class="card step-card">
-              <p class="step-number">1</p>
-              <h3>Describe el problema</h3>
-              <p>
-                Cuéntanos qué pasó por WhatsApp con pocas palabras y, si quieres,
-                con foto.
-              </p>
-            </article>
-            <article class="card step-card">
-              <p class="step-number">2</p>
-              <h3>Fixy encuentra ayuda</h3>
-              <p>
-                Identificamos el rubro correcto y buscamos un proveedor confiable
-                cercano.
-              </p>
-            </article>
-            <article class="card step-card">
-              <p class="step-number">3</p>
-              <h3>Solución en minutos</h3>
-              <p>
-                Coordinamos rápido para que recibas asistencia cuando más la
-                necesitas.
-              </p>
-            </article>
-          </div>
+        <div class="container section-heading">
+          <p class="section-kicker">Cómo funciona</p>
+          <h2>Una forma simple de resolver problemas urgentes en casa</h2>
+        </div>
+        <div class="container steps-grid">
+          <article class="card step-card">
+            <p class="step-number">1</p>
+            <h3>Describe el problema</h3>
+            <p>
+              Cuéntanos por WhatsApp qué pasó. Si quieres, también puedes enviar una foto.
+            </p>
+          </article>
+          <article class="card step-card">
+            <p class="step-number">2</p>
+            <h3>Fixy organiza el caso</h3>
+            <p>
+              Detectamos el rubro, la urgencia y la zona para mover el caso más rápido.
+            </p>
+          </article>
+          <article class="card step-card">
+            <p class="step-number">3</p>
+            <h3>Te ayudamos a encontrar solución</h3>
+            <p>
+              Buscamos un proveedor confiable para que puedas resolverlo sin vueltas.
+            </p>
+          </article>
         </div>
       </section>
 
       <section class="section section-muted" id="servicios">
-        <div class="container">
-          <h2>Servicios urgentes</h2>
-          <div class="services-grid">
-            <article class="card service-card"><span>🚰</span>Plomería</article>
-            <article class="card service-card"><span>⚡</span>Electricidad</article>
-            <article class="card service-card"><span>🔐</span>Cerrajería</article>
-            <article class="card service-card"><span>🚛</span>Barométrica</article>
-            <article class="card service-card"><span>🛠️</span>Reparaciones del hogar</article>
-          </div>
+        <div class="container section-heading">
+          <p class="section-kicker">Servicios</p>
+          <h2>Empezamos con las urgencias del hogar más comunes</h2>
+        </div>
+        <div class="container services-grid">
+          <article class="card service-card"><span>🚰</span><div><strong>Plomería</strong><p>Pérdidas, duchas, caños y agua sin parar.</p></div></article>
+          <article class="card service-card"><span>⚡</span><div><strong>Electricidad</strong><p>Cortos, tableros, enchufes y fallas eléctricas.</p></div></article>
+          <article class="card service-card"><span>🔐</span><div><strong>Cerrajería</strong><p>Puertas trabadas, cerraduras y accesos urgentes.</p></div></article>
+          <article class="card service-card"><span>🚛</span><div><strong>Barométrica</strong><p>Pozo, saneamiento y servicios de desagote.</p></div></article>
+          <article class="card service-card"><span>🛠️</span><div><strong>Reparaciones del hogar</strong><p>Arreglos urgentes y problemas domésticos varios.</p></div></article>
         </div>
       </section>
 
       <section class="section" id="confianza">
-        <div class="container">
-          <h2>Confianza para resolver hoy</h2>
-          <div class="trust-grid">
-            <article class="card trust-card">
-              <h3>Proveedores verificados</h3>
-              <p>Trabajamos con profesionales evaluados para cada categoría.</p>
-            </article>
-            <article class="card trust-card">
-              <h3>Respuesta rápida</h3>
-              <p>Te respondemos al instante para no perder tiempo en la urgencia.</p>
-            </article>
-            <article class="card trust-card">
-              <h3>Atención local en Ciudad de la Costa</h3>
-              <p>Empezamos aquí para conectar cada urgencia con ayuda cercana y confiable.</p>
-            </article>
-            <article class="card trust-card">
-              <h3>Experiencia simple</h3>
-              <p>Sin llamadas eternas: todo claro y directo por WhatsApp.</p>
-            </article>
-          </div>
+        <div class="container section-heading">
+          <p class="section-kicker">Confianza</p>
+          <h2>Diseñado para urgencias donde importa la rapidez y la claridad</h2>
+        </div>
+        <div class="container trust-grid">
+          <article class="card trust-card">
+            <h3>Atención por WhatsApp</h3>
+            <p>Sin formularios eternos. Hablas directo, explicas el problema y avanzamos rápido.</p>
+          </article>
+          <article class="card trust-card">
+            <h3>Enfoque local</h3>
+            <p>Comenzamos en Montevideo para responder mejor y aprender del mercado real.</p>
+          </article>
+          <article class="card trust-card">
+            <h3>Proveedores confiables</h3>
+            <p>La prioridad es conectarte con ayuda seria para cada categoría de servicio.</p>
+          </article>
+          <article class="card trust-card">
+            <h3>Proceso simple</h3>
+            <p>Primero resolvemos el problema. Después seguimos mejorando la experiencia.</p>
+          </article>
         </div>
       </section>
 
       <section class="section section-muted" id="proveedores">
         <div class="container provider-cta card">
-          <h2>¿Eres proveedor?</h2>
+          <p class="section-kicker">Proveedores</p>
+          <h2>¿Trabajas resolviendo urgencias del hogar?</h2>
           <p>
-            Súmate a Fixy y recibe clientes cercanos que necesitan resolver
-            urgencias del hogar en Ciudad de la Costa, antes de expandirnos al resto del país.
+            Súmate a Fixy para recibir oportunidades en Montevideo en categorías como
+            plomería, electricidad, cerrajería, barométrica y reparaciones del hogar.
           </p>
-          <a class="btn btn-primary" href="#" data-wa="provider">Quiero unirme</a>
+          <a class="btn btn-primary btn-large" href="#" data-wa="provider">Quiero unirme como proveedor</a>
         </div>
       </section>
 
       <section class="section final-cta">
         <div class="container card final-cta-card">
-          <h2>¿Necesitas ayuda ahora?</h2>
+          <p class="section-kicker">Ayuda inmediata</p>
+          <h2>¿Necesitas resolver algo urgente en casa?</h2>
           <p>
-            Describe tu problema y Fixy te conecta con ayuda confiable en Ciudad de la Costa.
+            Escríbenos por WhatsApp y cuéntanos qué pasó. Fixy te ayuda a encontrar una
+            solución rápida y confiable.
           </p>
-          <a class="btn btn-primary" href="#" data-wa="customer">
+          <a class="btn btn-primary btn-large" href="#" data-wa="customer">
             Solicitar ayuda por WhatsApp
           </a>
         </div>
@@ -176,7 +233,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="footer-logo">Fixy</p>
-        <p>Comenzamos en Ciudad de la Costa y vamos camino a expandirnos al resto del país.</p>
+        <p>Resolviendo urgencias del hogar en Montevideo, empezando simple y enfocados en ejecución.</p>
         <p>© <span id="year"></span> Fixy. Todos los derechos reservados.</p>
       </div>
     </footer>

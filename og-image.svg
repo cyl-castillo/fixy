@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="36" y="36" width="1128" height="558" rx="36" fill="url(#bg)"/>
+  <circle cx="1040" cy="122" r="122" fill="#22C55E" fill-opacity="0.12"/>
+  <circle cx="104" cy="532" r="148" fill="#22C55E" fill-opacity="0.12"/>
+  <text x="100" y="178" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Urgencias del hogar en Montevideo</text>
+  <text x="100" y="286" fill="white" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800">Describe tu problema.</text>
+  <text x="100" y="370" fill="white" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800">Fixy encuentra la solución.</text>
+  <text x="100" y="450" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">Plomería, electricidad, cerrajería y más.</text>
+  <rect x="100" y="500" width="310" height="64" rx="18" fill="#22C55E"/>
+  <text x="132" y="542" fill="#052E16" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">WhatsApp como canal principal</text>
+  <rect x="930" y="430" width="150" height="150" rx="32" fill="white" fill-opacity="0.1"/>
+  <path d="M975 470H1050V490H1005V507H1041V527H1005V560H975V470Z" fill="white"/>
+  <defs>
+    <linearGradient id="bg" x1="36" y1="36" x2="1164" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+</svg>
