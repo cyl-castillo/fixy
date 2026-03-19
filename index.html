@@ -87,9 +87,32 @@
               Encuentra plomeros, electricistas, cerrajeros y más en minutos.
             </p>
             <p class="hero-support">
-              Escríbenos por WhatsApp, cuéntanos qué pasó y te ayudamos a encontrar
+              Escríbenos por WhatsApp o deja tu caso en el formulario y te ayudamos a encontrar
               un proveedor confiable para resolverlo rápido.
             </p>
+
+            <form class="hero-form card" id="lead-form">
+              <div class="hero-form-grid">
+                <label>
+                  <span>Nombre</span>
+                  <input type="text" name="name" placeholder="Tu nombre" />
+                </label>
+                <label>
+                  <span>Teléfono</span>
+                  <input type="text" name="phone" placeholder="099123456" />
+                </label>
+              </div>
+              <label>
+                <span>¿Qué problema tenés?</span>
+                <textarea name="problem" rows="4" placeholder="Ej: se rompió la ducha y pierde agua sin parar en Pocitos" required></textarea>
+              </label>
+              <div class="hero-form-actions">
+                <button class="btn btn-primary" type="submit">Enviar caso a Fixy</button>
+                <a class="btn btn-secondary" href="#" data-wa="customer">Prefiero WhatsApp</a>
+              </div>
+              <p class="hero-form-note">Te contactamos para coordinar más rápido. Si es urgente, también podés escribir directo por WhatsApp.</p>
+              <div id="lead-form-feedback" class="form-feedback" hidden></div>
+            </form>
 
             <div class="hero-actions">
               <a class="btn btn-primary btn-large" href="#" data-wa="customer">

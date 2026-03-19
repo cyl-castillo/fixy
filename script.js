@@ -1,4 +1,5 @@
 const WHATSAPP_NUMBER = "59893551242";
+const API_BASE_URL = "https://monitored-elements-pro-blvd.trycloudflare.com";
 
 const MESSAGES = {
   customer: "Hola, necesito ayuda con un problema en casa.",
@@ -33,4 +34,51 @@ function setCurrentYear() {
 document.addEventListener("DOMContentLoaded", () => {
   setupWhatsAppButtons();
   setCurrentYear();
+});
+back.textContent = message;
+  feedback.classList.toggle("error", isError);
+}
+
+function setupLeadForm() {
+  const form = document.getElementById("lead-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name")?.toString().trim() || null,
+      phone: formData.get("phone")?.toString().trim() || null,
+      problem: formData.get("problem")?.toString().trim() || "",
+      channel: "web",
+    };
+
+    if (!payload.problem) {
+      showLeadFormFeedback("Contanos el problema para poder ayudarte.", true);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/public/leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("request_failed");
+      }
+
+      form.reset();
+      showLeadFormFeedback("Recibimos tu caso. Te vamos a contactar para coordinar.");
+    } catch (error) {
+      showLeadFormFeedback("No pudimos enviar el caso ahora. Probá por WhatsApp.", true);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupWhatsAppButtons();
+  setCurrentYear();
+  setupLeadForm();
 });
