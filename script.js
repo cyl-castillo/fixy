@@ -1,5 +1,5 @@
 const WHATSAPP_NUMBER = "59893551242";
-const API_BASE_URL = "https://monitored-elements-pro-blvd.trycloudflare.com";
+const API_BASE_URL = "https://api.fixy.com.uy";
 
 const MESSAGES = {
   customer: "Hola, necesito ayuda con un problema en casa.",
@@ -31,11 +31,11 @@ function setCurrentYear() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupWhatsAppButtons();
-  setCurrentYear();
-});
-back.textContent = message;
+function showLeadFormFeedback(message, isError = false) {
+  const feedback = document.getElementById("lead-form-feedback");
+  if (!feedback) return;
+  feedback.hidden = false;
+  feedback.textContent = message;
   feedback.classList.toggle("error", isError);
 }
 
@@ -45,6 +45,7 @@ function setupLeadForm() {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     const formData = new FormData(form);
     const payload = {
       name: formData.get("name")?.toString().trim() || null,
