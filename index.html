@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Fixy te ayuda a resolver urgencias del hogar en Montevideo. Describe tu problema por WhatsApp y te ayudamos a encontrar un proveedor confiable rápido."
+      content="Fixy te ayuda a resolver urgencias del hogar en Montevideo. Habla con el agente de Fixy y encuentra proveedores confiables rápido."
     />
     <meta
       name="keywords"
@@ -14,32 +14,29 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Fixy" />
     <meta name="theme-color" content="#0f172a" />
-
     <meta property="og:locale" content="es_UY" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Fixy" />
     <meta property="og:title" content="Fixy | Soluciones urgentes para tu hogar" />
     <meta
       property="og:description"
-      content="Describe tu problema por WhatsApp y Fixy te ayuda a encontrar plomeros, electricistas, cerrajeros y más en Montevideo."
+      content="Habla con el agente de Fixy para describir tu problema y encontrar proveedores confiables rápido."
     />
-    <meta property="og:url" content="https://cyl-castillo.github.io/fixy/" />
-    <meta property="og:image" content="https://cyl-castillo.github.io/fixy/og-image.svg" />
+    <meta property="og:url" content="https://www.fixy.com.uy/" />
+    <meta property="og:image" content="https://www.fixy.com.uy/og-image.svg" />
     <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Fixy, soluciones urgentes para tu hogar en Montevideo" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Fixy | Soluciones urgentes para tu hogar" />
     <meta
       name="twitter:description"
-      content="Describe tu problema por WhatsApp y Fixy te ayuda a encontrar ayuda confiable en Montevideo."
+      content="Habla con el agente de Fixy y encuentra ayuda confiable para urgencias del hogar."
     />
-    <meta name="twitter:image" content="https://cyl-castillo.github.io/fixy/og-image.svg" />
-
+    <meta name="twitter:image" content="https://www.fixy.com.uy/og-image.svg" />
     <title>Fixy | Soluciones urgentes para tu hogar</title>
-    <link rel="canonical" href="https://cyl-castillo.github.io/fixy/" />
+    <link rel="canonical" href="https://www.fixy.com.uy/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="favicon.svg" />
@@ -68,11 +65,10 @@
 
         <a
           class="btn btn-primary header-cta"
-          href="#"
-          data-wa="customer"
-          aria-label="Solicitar ayuda por WhatsApp"
+          href="#agent-panel"
+          aria-label="Abrir agente de Fixy"
         >
-          Pedir ayuda
+          Hablar con Fixy
         </a>
       </div>
     </header>
@@ -84,11 +80,12 @@
             <p class="eyebrow">Urgencias del hogar en Montevideo</p>
             <h1>Describe tu problema. Fixy encuentra la solución.</h1>
             <p class="hero-subtitle">
-              Encuentra plomeros, electricistas, cerrajeros y más en minutos.
+              En vez de un formulario rígido, habla con el agente de Fixy y te guiamos paso a paso
+              hasta encontrar el proveedor adecuado.
             </p>
             <p class="hero-support">
-              Escríbenos por WhatsApp o deja tu caso en el formulario y te ayudamos a encontrar
-              un proveedor confiable para resolverlo rápido.
+              Puedes empezar con pocas palabras. Fixy detecta la categoría, te pide solo lo que falta
+              y busca opciones cuando el caso ya está listo.
             </p>
 
             <form class="hero-form card" id="lead-form">
@@ -104,19 +101,19 @@
               </div>
               <label>
                 <span>¿Qué problema tenés?</span>
-                <textarea name="problem" rows="4" placeholder="Ej: se rompió la ducha y pierde agua sin parar en Pocitos" required></textarea>
+                <textarea name="problem" rows="4" placeholder="Ej: necesito electricista urgente, estoy sin luz" required></textarea>
               </label>
               <div class="hero-form-actions">
-                <button class="btn btn-primary" type="submit">Enviar caso a Fixy</button>
-                <a class="btn btn-secondary" href="#" data-wa="customer">Prefiero WhatsApp</a>
+                <button class="btn btn-primary" type="submit">Empezar con Fixy</button>
+                <a class="btn btn-secondary" href="#agent-panel">Ver panel del agente</a>
               </div>
-              <p class="hero-form-note">Te contactamos para coordinar más rápido. Si es urgente, también podés escribir directo por WhatsApp.</p>
+              <p class="hero-form-note">Si alcanza con lo que mandas, Fixy ya intenta preparar matches. Si falta contexto, te pide solo lo justo.</p>
               <div id="lead-form-feedback" class="form-feedback" hidden></div>
             </form>
 
             <div class="hero-actions">
-              <a class="btn btn-primary btn-large" href="#" data-wa="customer">
-                Solicitar ayuda por WhatsApp
+              <a class="btn btn-primary btn-large" href="#agent-panel">
+                Abrir agente de Fixy
               </a>
               <a class="btn btn-secondary btn-large" href="#proveedores">
                 Soy proveedor
@@ -124,35 +121,55 @@
             </div>
 
             <ul class="hero-proof" aria-label="Beneficios principales">
-              <li>Respuesta rápida por WhatsApp</li>
-              <li>Proveedores para urgencias reales</li>
-              <li>Atención simple, humana y directa</li>
+              <li>Intake conversacional</li>
+              <li>Matching guiado por contexto</li>
+              <li>Proveedor sugerido con razones claras</li>
             </ul>
           </div>
 
-          <aside class="request-card" aria-label="Ejemplo de solicitud en Fixy">
+          <aside class="request-card" aria-label="Panel del agente de Fixy" id="agent-panel">
             <div class="card-topline">
-              <p class="card-label">Solicitud en curso</p>
-              <span class="card-badge">WhatsApp</span>
+              <p class="card-label">Agente Fixy</p>
+              <span class="card-badge" id="agent-status-badge">Esperando caso</span>
             </div>
-            <h2>“Se rompió la ducha y sale agua sin parar”</h2>
-            <p class="request-intro">
-              Fixy identifica el problema y acelera la conexión con el proveedor adecuado.
+            <h2 id="agent-title">Todavía no hay un caso cargado</h2>
+            <p class="request-intro" id="agent-summary">
+              Completa el formulario y Fixy te mostrará lo que entendió, lo que falta y cuándo ya puede buscar proveedores.
             </p>
-            <ul>
+            <ul id="agent-insights">
               <li>
-                <span>🔎 Categoría detectada</span>
-                <strong>Plomería</strong>
+                <span>🧠 Estado</span>
+                <strong id="agent-next-action">Esperando inicio</strong>
               </li>
               <li>
-                <span>⚡ Prioridad</span>
-                <strong>Urgente</strong>
+                <span>📝 Falta</span>
+                <strong id="agent-missing-fields">—</strong>
               </li>
               <li>
-                <span>✅ Siguiente paso</span>
-                <strong>Buscar proveedor confiable</strong>
+                <span>✅ Matching</span>
+                <strong id="agent-ready">Aún no</strong>
               </li>
             </ul>
+
+            <form class="agent-context-form" id="context-form" hidden>
+              <label>
+                <span>Zona o ubicación</span>
+                <input type="text" name="location" placeholder="Ej: Pocitos" />
+              </label>
+              <label>
+                <span>Contexto adicional</span>
+                <textarea name="notes" rows="3" placeholder="Ej: es en apartamento, salta la llave general"></textarea>
+              </label>
+              <div class="hero-form-actions compact-actions">
+                <button class="btn btn-secondary" type="submit">Agregar contexto</button>
+                <button class="btn btn-primary" type="button" id="match-button">Buscar proveedores</button>
+              </div>
+            </form>
+
+            <div class="match-results" id="match-results" hidden>
+              <h3>Proveedores sugeridos</h3>
+              <div id="match-list" class="match-list"></div>
+            </div>
           </aside>
         </div>
       </section>
@@ -160,29 +177,23 @@
       <section class="section" id="como-funciona">
         <div class="container section-heading">
           <p class="section-kicker">Cómo funciona</p>
-          <h2>Una forma simple de resolver problemas urgentes en casa</h2>
+          <h2>Una experiencia más parecida a hablar con un operador que a llenar un formulario</h2>
         </div>
         <div class="container steps-grid">
           <article class="card step-card">
             <p class="step-number">1</p>
-            <h3>Describe el problema</h3>
-            <p>
-              Cuéntanos por WhatsApp qué pasó. Si quieres, también puedes enviar una foto.
-            </p>
+            <h3>Describes el problema</h3>
+            <p>Empiezas con lenguaje natural, aunque sea breve.</p>
           </article>
           <article class="card step-card">
             <p class="step-number">2</p>
-            <h3>Fixy organiza el caso</h3>
-            <p>
-              Detectamos el rubro, la urgencia y la zona para mover el caso más rápido.
-            </p>
+            <h3>Fixy estructura el caso</h3>
+            <p>Detecta rubro, urgencia y te pide solo los datos que realmente faltan.</p>
           </article>
           <article class="card step-card">
             <p class="step-number">3</p>
-            <h3>Te ayudamos a encontrar solución</h3>
-            <p>
-              Buscamos un proveedor confiable para que puedas resolverlo sin vueltas.
-            </p>
+            <h3>Busca y explica matches</h3>
+            <p>Cuando el caso está listo, muestra proveedores sugeridos con razones claras.</p>
           </article>
         </div>
       </section>
@@ -204,24 +215,24 @@
       <section class="section" id="confianza">
         <div class="container section-heading">
           <p class="section-kicker">Confianza</p>
-          <h2>Diseñado para urgencias donde importa la rapidez y la claridad</h2>
+          <h2>Diseñado para moverse rápido, pero sin improvisar</h2>
         </div>
         <div class="container trust-grid">
           <article class="card trust-card">
-            <h3>Atención por WhatsApp</h3>
-            <p>Sin formularios eternos. Hablas directo, explicas el problema y avanzamos rápido.</p>
+            <h3>Agente especializado</h3>
+            <p>No intenta hacer de todo. Se enfoca en intake y matching de servicios.</p>
           </article>
           <article class="card trust-card">
-            <h3>Enfoque local</h3>
-            <p>Comenzamos en Montevideo para responder mejor y aprender del mercado real.</p>
+            <h3>Señales claras</h3>
+            <p>El backend dice qué falta, qué bloquea y cuál es el siguiente paso.</p>
           </article>
           <article class="card trust-card">
-            <h3>Proveedores confiables</h3>
-            <p>La prioridad es conectarte con ayuda seria para cada categoría de servicio.</p>
+            <h3>Matches explicables</h3>
+            <p>Cada sugerencia muestra por qué apareció, no solo un nombre suelto.</p>
           </article>
           <article class="card trust-card">
-            <h3>Proceso simple</h3>
-            <p>Primero resolvemos el problema. Después seguimos mejorando la experiencia.</p>
+            <h3>Arquitectura extensible</h3>
+            <p>Lo mismo puede alimentar web, WhatsApp, panel interno y futuras interfaces.</p>
           </article>
         </div>
       </section>
@@ -231,24 +242,9 @@
           <p class="section-kicker">Proveedores</p>
           <h2>¿Trabajas resolviendo urgencias del hogar?</h2>
           <p>
-            Súmate a Fixy para recibir oportunidades en Montevideo en categorías como
-            plomería, electricidad, cerrajería, barométrica y reparaciones del hogar.
+            Fixy también puede crecer como interfaz para operadores y proveedores. Por ahora estamos afinando la experiencia de captación y matching.
           </p>
-          <a class="btn btn-primary btn-large" href="#" data-wa="provider">Quiero unirme como proveedor</a>
-        </div>
-      </section>
-
-      <section class="section final-cta">
-        <div class="container card final-cta-card">
-          <p class="section-kicker">Ayuda inmediata</p>
-          <h2>¿Necesitas resolver algo urgente en casa?</h2>
-          <p>
-            Escríbenos por WhatsApp y cuéntanos qué pasó. Fixy te ayuda a encontrar una
-            solución rápida y confiable.
-          </p>
-          <a class="btn btn-primary btn-large" href="#" data-wa="customer">
-            Solicitar ayuda por WhatsApp
-          </a>
+          <a class="btn btn-primary btn-large" href="#agent-panel">Ver experiencia actual</a>
         </div>
       </section>
     </main>
@@ -256,7 +252,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p class="footer-logo">Fixy</p>
-        <p>Resolviendo urgencias del hogar en Montevideo, empezando simple y enfocados en ejecución.</p>
+        <p>Frontend agent-ready conectado al backend de Fixy para resolver urgencias del hogar en Montevideo.</p>
         <p>© <span id="year"></span> Fixy. Todos los derechos reservados.</p>
       </div>
     </footer>
