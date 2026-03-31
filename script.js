@@ -20,6 +20,59 @@ function showLeadFormFeedback(message, isError = false) {
   feedback.classList.toggle("error", isError);
 }
 
+function humanizeNextAction(action) {
+  switch (action) {
+    case "ask_location":
+      return "Compartir tu zona o ubicación";
+    case "ask_service_category":
+      return "Aclarar qué tipo de ayuda necesitas";
+    case "generate_matches":
+      return "Revisar opciones disponibles";
+    case "present_matches":
+      return "Elegir entre las opciones sugeridas";
+    case "ampliar_busqueda_o_handoff":
+      return "Ampliar la búsqueda o revisar el caso manualmente";
+    default:
+      return "Seguir entendiendo el caso";
+  }
+}
+
+function buildStageCopy(lead) {
+  if (!lead.problem) {
+    return "Empieza contándonos el problema con tus palabras. Si falta algo, te lo pedimos sin complicarte.";
+  }
+
+  if (lead.readyForMatching) {
+    return "Ya tenemos suficiente contexto para buscar opciones. Si quieres, puedes revisar proveedores ahora mismo.";
+  }
+
+  if (lead.blockingFields?.includes("zona")) {
+    return "Ya entendimos bastante bien el problema. Lo que más nos ayudaría ahora es saber la zona para buscar opciones con más criterio.";
+  }
+
+  if (lead.blockingFields?.includes("categoria")) {
+    return "Todavía necesitamos entender mejor qué tipo de ayuda encaja con tu caso antes de sugerir opciones.";
+  }
+
+  return "Vamos bien. Sumando un poco más de contexto, Fixy podrá orientarte mejor.";
+}
+
+function buildHintCopy(lead) {
+  if (lead.readyForMatching) {
+    return "Tu caso ya está listo para revisar opciones. Si quieres, también puedes sumar más detalles antes de comparar proveedores.";
+  }
+
+  if (lead.blockingFields?.includes("zona")) {
+    return "La zona ayuda mucho a priorizar mejor. Con ese dato, el matching suele mejorar bastante.";
+  }
+
+  if (lead.missingFields?.length) {
+    return `Fixy detectó que todavía puede faltarnos: ${lead.missingFields.join(", ")}.`;
+  }
+
+  return "Si ya sabes algún detalle útil, agrégalo para acelerar el caso.";
+}
+
 function updateAgentPanel(lead) {
   state.lead = lead;
 
@@ -31,70 +84,67 @@ function updateAgentPanel(lead) {
   const ready = document.getElementById("agent-ready");
   const contextForm = document.getElementById("context-form");
   const matchButton = document.getElementById("match-button");
+  const stageCopy = document.getElementById("agent-stage-copy");
+  const hintBox = document.getElementById("agent-hint-box");
 
-  if (!badge || !title || !summary || !nextAction || !missingFields || !ready || !contextForm || !matchButton) {
+  if (!badge || !title || !summary || !nextAction || !missingFields || !ready || !contextForm || !matchButton || !stageCopy || !hintBox) {
     return;
   }
 
-  badge.textContent = lead.readyForMatching ? "Listo para matching" : "Necesita contexto";
+  badge.textContent = lead.readyForMatching ? "Listo para comparar opciones" : "Necesitamos un poco más de contexto";
   title.textContent = lead.problem || "Caso iniciado";
   summary.textContent = lead.summary || "Fixy todavía está interpretando el caso.";
   nextAction.textContent = humanizeNextAction(lead.nextRecommendedAction);
-  missingFields.textContent = lead.missingFields?.length ? lead.missingFields.join(", ") : "Nada crítico";
-  ready.textContent = lead.readyForMatching ? "Sí" : "Todavía no";
+  missingFields.textContent = lead.missingFields?.length ? lead.missingFields.join(", ") : "Nada importante por pedir";
+  ready.textContent = lead.readyForMatching ? "Listo para revisar opciones" : "Todavía en preparación";
+  stageCopy.textContent = buildStageCopy(lead);
+  hintBox.textContent = buildHintCopy(lead);
 
   contextForm.hidden = false;
   matchButton.disabled = !lead.readyForMatching;
 }
 
-function humanizeNextAction(action) {
-  switch (action) {
-    case "ask_location":
-      return "Pedir ubicación o zona";
-    case "ask_service_category":
-      return "Confirmar categoría del servicio";
-    case "generate_matches":
-      return "Buscar proveedores";
-    case "present_matches":
-      return "Mostrar opciones al usuario";
-    case "ampliar_busqueda_o_handoff":
-      return "Ampliar búsqueda o pasar a humano";
-    default:
-      return "Seguir evaluando el caso";
-  }
-}
-
 function renderMatches(payload) {
   const wrapper = document.getElementById("match-results");
   const list = document.getElementById("match-list");
-  if (!wrapper || !list) return;
+  const copy = document.getElementById("match-results-copy");
+
+  if (!wrapper || !list || !copy) return;
 
   list.innerHTML = "";
   wrapper.hidden = false;
 
   if (!payload.matches || payload.matches.length === 0) {
+    copy.textContent = "Todavía no encontramos una opción clara con este contexto. Puede convenir sumar más detalle o ampliar la búsqueda.";
     const empty = document.createElement("div");
     empty.className = "match-card match-card-empty";
     empty.innerHTML = `
-      <strong>No hay matches listos todavía</strong>
+      <strong>Por ahora no hay una recomendación fuerte</strong>
       <p>${humanizeNextAction(payload.nextRecommendedAction)}</p>
     `;
     list.appendChild(empty);
     return;
   }
 
-  payload.matches.forEach((match) => {
+  copy.textContent = payload.matches.length === 1
+    ? "Encontramos una opción que encaja bien con tu caso."
+    : "Estas son las opciones que mejor encajan con lo que entendimos del caso.";
+
+  payload.matches.forEach((match, index) => {
     const item = document.createElement("article");
     item.className = "match-card";
     item.innerHTML = `
       <div class="match-card-head">
-        <strong>${match.name}</strong>
-        <span class="match-score">Score ${match.score}</span>
+        <div>
+          <p class="match-rank">Opción ${index + 1}</p>
+          <strong>${match.name}</strong>
+        </div>
+        <span class="match-score">Compatibilidad ${match.score}</span>
       </div>
       <p><strong>Rubro:</strong> ${match.category}</p>
       <p><strong>Zona:</strong> ${match.zone}</p>
-      <p><strong>Teléfono:</strong> ${match.phone}</p>
-      <p><strong>Razones:</strong> ${match.reasons.join(", ")}</p>
+      <p><strong>Contacto:</strong> ${match.phone}</p>
+      <p><strong>Por qué aparece:</strong> ${match.reasons.join(", ")}</p>
     `;
     list.appendChild(item);
   });
@@ -156,7 +206,7 @@ function setupLeadForm() {
     };
 
     if (!payload.problem) {
-      showLeadFormFeedback("Contame el problema para que Fixy pueda empezar.", true);
+      showLeadFormFeedback("Cuéntame qué está pasando para que Fixy pueda empezar.", true);
       return;
     }
 
@@ -167,8 +217,8 @@ function setupLeadForm() {
       document.getElementById("match-results")?.setAttribute("hidden", "hidden");
       showLeadFormFeedback(
         lead.readyForMatching
-          ? "Fixy ya entendió suficiente. Puedes buscar proveedores ahora."
-          : `Fixy entendió el caso. Falta: ${lead.blockingFields?.join(", ") || "algo más de contexto"}.`,
+          ? "Listo. Ya tenemos contexto suficiente para revisar opciones."
+          : `Fixy ya empezó a ordenar tu caso. Lo siguiente es: ${humanizeNextAction(lead.nextRecommendedAction)}.`,
         false,
       );
       document.getElementById("agent-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -186,7 +236,7 @@ function setupContextForm() {
     event.preventDefault();
 
     if (!state.leadId) {
-      showLeadFormFeedback("Primero inicia un caso para poder agregar contexto.", true);
+      showLeadFormFeedback("Primero inicia un caso para poder sumar contexto.", true);
       return;
     }
 
@@ -197,7 +247,7 @@ function setupContextForm() {
     };
 
     if (!payload.location && !payload.notes) {
-      showLeadFormFeedback("Agrega una zona o algo de contexto para seguir.", true);
+      showLeadFormFeedback("Agrega una zona o algún detalle útil para seguir.", true);
       return;
     }
 
@@ -206,8 +256,8 @@ function setupContextForm() {
       updateAgentPanel(lead);
       showLeadFormFeedback(
         lead.readyForMatching
-          ? "Perfecto. Con este contexto, Fixy ya puede buscar proveedores."
-          : `Contexto guardado. Aún falta: ${lead.blockingFields?.join(", ") || lead.missingFields?.join(", ")}.`,
+          ? "Perfecto. Ahora sí ya podemos revisar opciones con mejor criterio."
+          : `Bien. El caso avanzó. Lo siguiente es: ${humanizeNextAction(lead.nextRecommendedAction)}.`,
         false,
       );
     } catch (error) {
@@ -222,7 +272,7 @@ function setupMatchButton() {
 
   button.addEventListener("click", async () => {
     if (!state.leadId) {
-      showLeadFormFeedback("Primero inicia un caso para buscar proveedores.", true);
+      showLeadFormFeedback("Primero inicia un caso para revisar opciones.", true);
       return;
     }
 
@@ -232,12 +282,12 @@ function setupMatchButton() {
       renderMatches(payload);
       showLeadFormFeedback(
         payload.matches?.length
-          ? "Fixy encontró proveedores sugeridos para este caso."
-          : "Todavía no hay matches. Conviene ampliar la búsqueda o sumar contexto.",
+          ? "Listo. Fixy encontró opciones que encajan con tu caso."
+          : "Todavía no hay una recomendación clara. Puede convenir sumar más contexto.",
         false,
       );
     } catch (error) {
-      showLeadFormFeedback(error.message || "No pudimos generar matches.", true);
+      showLeadFormFeedback(error.message || "No pudimos generar opciones ahora.", true);
     }
   });
 }

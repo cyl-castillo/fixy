@@ -85,12 +85,12 @@ h3 {
 
 h1 {
   font-size: clamp(2.4rem, 6vw, 4.7rem);
-  max-width: 10ch;
+  max-width: 11ch;
 }
 
 h2 {
   font-size: clamp(1.9rem, 4vw, 3rem);
-  max-width: 14ch;
+  max-width: 15ch;
 }
 
 h3 {
@@ -251,14 +251,14 @@ textarea:focus-visible {
 
 .hero-subtitle {
   font-size: clamp(1.1rem, 2.4vw, 1.45rem);
-  max-width: 34ch;
+  max-width: 36ch;
   color: #1e293b;
   font-weight: 600;
 }
 
 .hero-support {
   margin-top: 1rem;
-  max-width: 58ch;
+  max-width: 60ch;
   font-size: 1.02rem;
 }
 
@@ -313,16 +313,18 @@ textarea:focus-visible {
 
 .form-feedback {
   margin-top: 0.75rem;
-  padding: 0.8rem 0.95rem;
+  padding: 0.9rem 1rem;
   border-radius: 12px;
   background: #ecfdf3;
   color: #166534;
   font-weight: 600;
+  border: 1px solid #bbf7d0;
 }
 
 .form-feedback.error {
   background: #fef2f2;
   color: #b91c1c;
+  border-color: #fecaca;
 }
 
 .hero-actions {
@@ -366,7 +368,7 @@ textarea:focus-visible {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(226, 232, 240, 0.95);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -403,22 +405,32 @@ textarea:focus-visible {
 .request-card h2 {
   font-size: 1.3rem;
   margin-top: 1rem;
-  max-width: 20ch;
+  max-width: 22ch;
 }
 
 .request-intro {
   margin-top: 0.85rem;
 }
 
-.request-card ul {
+.agent-stage {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  color: #334155;
+  font-weight: 600;
+}
+
+.agent-insights {
   list-style: none;
   padding: 0;
-  margin: 1.25rem 0 0;
+  margin: 1.1rem 0 0;
   display: grid;
   gap: 0.85rem;
 }
 
-.request-card li {
+.agent-insights li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -429,9 +441,19 @@ textarea:focus-visible {
   padding: 0.9rem;
 }
 
-.request-card span {
+.agent-insights span {
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+.agent-hint {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  font-weight: 600;
 }
 
 .agent-context-form {
@@ -442,6 +464,11 @@ textarea:focus-visible {
 
 .match-results {
   margin-top: 1.25rem;
+}
+
+.match-results-header p {
+  margin-top: -0.2rem;
+  margin-bottom: 0.8rem;
 }
 
 .match-list {
@@ -470,6 +497,15 @@ textarea:focus-visible {
   margin-bottom: 0.5rem;
 }
 
+.match-rank {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin-bottom: 0.15rem;
+}
+
 .match-score {
   font-size: 0.84rem;
   font-weight: 800;
@@ -478,6 +514,7 @@ textarea:focus-visible {
   border: 1px solid #bbf7d0;
   border-radius: 999px;
   padding: 0.28rem 0.6rem;
+  white-space: nowrap;
 }
 
 .match-card-empty {
@@ -556,7 +593,7 @@ textarea:focus-visible {
   }
 
   .hero-grid {
-    grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.95fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.96fr);
     gap: 2.4rem;
   }
 
@@ -616,7 +653,7 @@ textarea:focus-visible {
     padding: 3.4rem 0;
   }
 
-  .request-card li,
+  .agent-insights li,
   .match-card-head {
     align-items: flex-start;
     flex-direction: column;
