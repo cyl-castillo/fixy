@@ -20,6 +20,19 @@ function showLeadFormFeedback(message, isError = false) {
   feedback.classList.toggle("error", isError);
 }
 
+async function readJsonSafely(response) {
+  const text = await response.text();
+  if (!text || !text.trim()) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
 function humanizeNextAction(action) {
   switch (action) {
     case "ask_location":
@@ -157,7 +170,7 @@ async function createLead(payload) {
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
+  const data = await readJsonSafely(response);
   if (!response.ok) {
     throw new Error(data?.error?.message || "No pudimos iniciar el caso");
   }
@@ -171,7 +184,7 @@ async function updateLeadContext(payload) {
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
+  const data = await readJsonSafely(response);
   if (!response.ok) {
     throw new Error(data?.error?.message || "No pudimos actualizar el contexto");
   }
@@ -183,7 +196,7 @@ async function generateMatches() {
     method: "POST",
   });
 
-  const data = await response.json();
+  const data = await readJsonSafely(response);
   if (!response.ok) {
     throw new Error(data?.error?.message || "No pudimos generar matches");
   }
