@@ -75,114 +75,133 @@
 
     <main id="main-content">
       <section class="hero section">
-        <div class="container hero-grid">
+        <div class="container hero-grid hero-grid-sequential">
           <div class="hero-content">
             <p class="eyebrow">Servicios urgentes del hogar en Ciudad de la Costa</p>
-            <h1>Cuéntanos qué pasó. Fixy te ayuda a encontrar solución rápido.</h1>
+            <h1>Contanos el problema y te guiamos paso a paso.</h1>
             <p class="hero-subtitle">
-              Empieza con una frase simple. Fixy entiende el problema, te pide solo lo necesario
-              y te acerca opciones cuando el caso ya está listo.
-            </p>
-            <p class="hero-support">
-              La idea no es hacerte llenar un formulario eterno. La idea es moverse rápido,
-              entender bien la urgencia y ayudarte a avanzar sin vueltas.
+              Fixy no te tira un formulario enorme. Primero entiende qué te pasa, después te pide solo lo justo y recién ahí te muestra opciones.
             </p>
 
-            <form class="hero-form card" id="lead-form">
-              <div class="hero-form-grid">
-                <label>
-                  <span>Nombre</span>
-                  <input type="text" name="name" placeholder="Tu nombre" />
-                </label>
-                <label>
-                  <span>Teléfono</span>
-                  <input type="text" name="phone" placeholder="099123456" />
-                </label>
-              </div>
-              <label>
-                <span>¿Qué está pasando?</span>
-                <textarea name="problem" rows="4" placeholder="Ej: tengo una pérdida de agua en Solymar y necesito plomero urgente" required></textarea>
-              </label>
-              <div class="hero-form-actions">
-                <button class="btn btn-primary" type="submit">Iniciar caso</button>
-                <a class="btn btn-secondary" href="#agent-panel">Ver cómo trabaja Fixy</a>
-              </div>
-              <p class="hero-form-note">Si falta contexto, Fixy te lo va a pedir. Si ya alcanza, te mostrará opciones para seguir.</p>
-              <div id="lead-form-feedback" class="form-feedback" hidden></div>
-            </form>
-
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-large" href="#agent-panel">
-                Abrir agente de Fixy
-              </a>
-              <a class="btn btn-secondary btn-large" href="#proveedores">
-                Soy proveedor
-              </a>
+            <div class="hero-proof-inline">
+              <span>1. Describir problema</span>
+              <span>2. Completar contexto</span>
+              <span>3. Ver opciones</span>
             </div>
 
-            <ul class="hero-proof" aria-label="Beneficios principales">
-              <li>Te pide solo lo necesario</li>
-              <li>Te muestra el siguiente paso claro</li>
-              <li>Empieza por plomería, barométrica y jardinería</li>
-            </ul>
+            <div class="sequential-flow">
+              <section class="card flow-step flow-step-active" id="step-1-card">
+                <div class="flow-step-head">
+                  <span class="flow-step-number">Paso 1</span>
+                  <h2>Contanos qué pasó</h2>
+                </div>
+                <p class="flow-step-copy">
+                  Empezá con una frase simple. Ejemplo: “tengo una pérdida de agua en Solymar y necesito plomero urgente”.
+                </p>
+
+                <form class="hero-form" id="lead-form">
+                  <div class="hero-form-grid">
+                    <label>
+                      <span>Nombre</span>
+                      <input type="text" name="name" placeholder="Tu nombre" />
+                    </label>
+                    <label>
+                      <span>Teléfono</span>
+                      <input type="text" name="phone" placeholder="099123456" />
+                    </label>
+                  </div>
+                  <label>
+                    <span>¿Qué está pasando?</span>
+                    <textarea name="problem" rows="4" placeholder="Ej: tengo una pérdida de agua en Solymar y necesito plomero urgente" required></textarea>
+                  </label>
+                  <div class="hero-form-actions hero-form-actions-single">
+                    <button class="btn btn-primary" type="submit">Continuar</button>
+                  </div>
+                  <div id="lead-form-feedback" class="form-feedback" hidden></div>
+                </form>
+              </section>
+
+              <section class="card flow-step" id="step-2-card">
+                <div class="flow-step-head">
+                  <span class="flow-step-number">Paso 2</span>
+                  <h2>Completá el dato que falta</h2>
+                </div>
+                <p class="flow-step-copy" id="step-2-copy">
+                  Cuando Fixy revise el caso, acá te va a pedir el dato más importante para seguir mejor.
+                </p>
+
+                <form class="agent-context-form" id="context-form" hidden>
+                  <label>
+                    <span>Zona o ubicación</span>
+                    <input type="text" name="location" placeholder="Ej: Solymar, Lagomar, El Pinar" />
+                  </label>
+                  <label>
+                    <span>Algún detalle útil</span>
+                    <textarea name="notes" rows="3" placeholder="Ej: es en apartamento, la pérdida empezó hoy, tengo agua cortada"></textarea>
+                  </label>
+                  <div class="hero-form-actions hero-form-actions-single compact-actions">
+                    <button class="btn btn-primary" type="submit">Guardar y seguir</button>
+                  </div>
+                </form>
+              </section>
+
+              <section class="card flow-step" id="step-3-card">
+                <div class="flow-step-head">
+                  <span class="flow-step-number">Paso 3</span>
+                  <h2>Ver opciones sugeridas</h2>
+                </div>
+                <p class="flow-step-copy" id="step-3-copy">
+                  Cuando el caso esté listo, Fixy te va a mostrar las opciones que mejor encajan.
+                </p>
+
+                <div class="request-card request-card-inline" aria-label="Panel del agente de Fixy" id="agent-panel">
+                  <div class="card-topline">
+                    <p class="card-label">Agente Fixy</p>
+                    <span class="card-badge" id="agent-status-badge">Esperando tu caso</span>
+                  </div>
+                  <h2 id="agent-title">Todavía no empezamos</h2>
+                  <p class="request-intro" id="agent-summary">
+                    Cuando envíes tu caso, acá vas a ver qué entendió Fixy, qué falta y cuándo ya puede buscar opciones para ti.
+                  </p>
+
+                  <div class="agent-stage" id="agent-stage-copy">
+                    Empieza contándonos el problema con tus palabras. Si falta algo, te lo pedimos sin complicarte.
+                  </div>
+
+                  <ul id="agent-insights" class="agent-insights">
+                    <li>
+                      <span>📍 Siguiente paso</span>
+                      <strong id="agent-next-action">Esperando inicio</strong>
+                    </li>
+                    <li>
+                      <span>🧩 Datos que faltan</span>
+                      <strong id="agent-missing-fields">—</strong>
+                    </li>
+                    <li>
+                      <span>🚦 Estado del caso</span>
+                      <strong id="agent-ready">Aún no listo</strong>
+                    </li>
+                  </ul>
+
+                  <div class="agent-hint" id="agent-hint-box">
+                    Tip: si ya sabes la zona o un detalle importante, agrégalo para acelerar el matching.
+                  </div>
+
+                  <div class="hero-form-actions hero-form-actions-single compact-actions">
+                    <button class="btn btn-primary" type="button" id="match-button" disabled>Ver opciones disponibles</button>
+                  </div>
+
+                  <div class="match-results" id="match-results" hidden>
+                    <div class="match-results-header">
+                      <h3>Opciones sugeridas por Fixy</h3>
+                      <p id="match-results-copy">Estas son las opciones que mejor encajan con lo que entendimos del caso.</p>
+                    </div>
+                    <div id="match-list" class="match-list"></div>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
-
-          <aside class="request-card" aria-label="Panel del agente de Fixy" id="agent-panel">
-            <div class="card-topline">
-              <p class="card-label">Agente Fixy</p>
-              <span class="card-badge" id="agent-status-badge">Esperando tu caso</span>
-            </div>
-            <h2 id="agent-title">Todavía no empezamos</h2>
-            <p class="request-intro" id="agent-summary">
-              Cuando envíes tu caso, acá vas a ver qué entendió Fixy, qué falta y cuándo ya puede buscar opciones para ti.
-            </p>
-
-            <div class="agent-stage" id="agent-stage-copy">
-              Empieza contándonos el problema con tus palabras. Si falta algo, te lo pedimos sin complicarte.
-            </div>
-
-            <ul id="agent-insights" class="agent-insights">
-              <li>
-                <span>📍 Siguiente paso</span>
-                <strong id="agent-next-action">Esperando inicio</strong>
-              </li>
-              <li>
-                <span>🧩 Datos que faltan</span>
-                <strong id="agent-missing-fields">—</strong>
-              </li>
-              <li>
-                <span>🚦 Estado del caso</span>
-                <strong id="agent-ready">Aún no listo</strong>
-              </li>
-            </ul>
-
-            <div class="agent-hint" id="agent-hint-box">
-              Tip: si ya sabes la zona o un detalle importante, agrégalo para acelerar el matching.
-            </div>
-
-            <form class="agent-context-form" id="context-form" hidden>
-              <label>
-                <span>Zona o ubicación</span>
-                <input type="text" name="location" placeholder="Ej: Solymar, Lagomar, El Pinar" />
-              </label>
-              <label>
-                <span>Algún detalle útil</span>
-                <textarea name="notes" rows="3" placeholder="Ej: es en apartamento, la pérdida empezó hoy, tengo agua cortada"></textarea>
-              </label>
-              <div class="hero-form-actions compact-actions">
-                <button class="btn btn-secondary" type="submit">Actualizar caso</button>
-                <button class="btn btn-primary" type="button" id="match-button">Ver opciones disponibles</button>
-              </div>
-            </form>
-
-            <div class="match-results" id="match-results" hidden>
-              <div class="match-results-header">
-                <h3>Opciones sugeridas por Fixy</h3>
-                <p id="match-results-copy">Estas son las opciones que mejor encajan con lo que entendimos del caso.</p>
-              </div>
-              <div id="match-list" class="match-list"></div>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -254,7 +273,7 @@
           <p>
             Fixy está construyendo una red de proveedores para Ciudad de la Costa. Si te interesa sumarte, queremos conocerte y entender tu zona de cobertura.
           </p>
-          <a class="btn btn-primary btn-large" href="#agent-panel">Ver experiencia actual</a>
+          <a class="btn btn-primary btn-large" href="#top">Volver arriba</a>
         </div>
       </section>
     </main>

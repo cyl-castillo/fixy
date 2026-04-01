@@ -84,13 +84,13 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.4rem, 6vw, 4.7rem);
-  max-width: 11ch;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  max-width: 12ch;
 }
 
 h2 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  max-width: 15ch;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  max-width: 20ch;
 }
 
 h3 {
@@ -184,7 +184,8 @@ p {
 .main-nav a:focus-visible,
 .logo:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+summary:focus-visible {
   outline: 3px solid rgba(34, 197, 94, 0.35);
   outline-offset: 3px;
 }
@@ -228,6 +229,10 @@ textarea:focus-visible {
   align-items: start;
 }
 
+.hero-grid-sequential {
+  grid-template-columns: 1fr;
+}
+
 .eyebrow,
 .section-kicker,
 .card-label,
@@ -250,21 +255,78 @@ textarea:focus-visible {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
-  max-width: 36ch;
+  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  max-width: 48ch;
   color: #1e293b;
   font-weight: 600;
 }
 
-.hero-support {
-  margin-top: 1rem;
-  max-width: 60ch;
-  font-size: 1.02rem;
+.hero-proof-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.hero-proof-inline span {
+  background: #eef2ff;
+  color: #334155;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.sequential-flow {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.flow-step {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.84);
+  opacity: 0.82;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.flow-step-active {
+  opacity: 1;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+}
+
+.flow-step-complete {
+  opacity: 1;
+  border-color: #bbf7d0;
+}
+
+.flow-step-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+}
+
+.flow-step-number {
+  width: fit-content;
+  background: #0f172a;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.flow-step-copy {
+  margin-bottom: 1rem;
 }
 
 .hero-form {
-  margin-top: 1.4rem;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .hero-form-grid {
@@ -302,13 +364,12 @@ textarea:focus-visible {
   width: 100%;
 }
 
-.compact-actions {
-  margin-top: 1rem;
+.hero-form-actions-single {
+  grid-template-columns: 1fr;
 }
 
-.hero-form-note {
-  margin-top: 0.75rem;
-  font-size: 0.92rem;
+.compact-actions {
+  margin-top: 1rem;
 }
 
 .form-feedback {
@@ -327,46 +388,6 @@ textarea:focus-visible {
   border-color: #fecaca;
 }
 
-.hero-actions {
-  margin-top: 1.8rem;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.hero-actions .btn {
-  width: 100%;
-}
-
-.hero-proof {
-  list-style: none;
-  padding: 0;
-  margin: 1.2rem 0 0;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.hero-proof li {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: #334155;
-  font-weight: 600;
-}
-
-.hero-proof li::before {
-  content: "✓";
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  flex: 0 0 auto;
-  font-size: 0.82rem;
-}
-
 .card {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(226, 232, 240, 0.95);
@@ -375,10 +396,14 @@ textarea:focus-visible {
 }
 
 .request-card {
-  padding: 1.5rem;
+  padding: 1.35rem;
   background:
     radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 28%),
     linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+.request-card-inline {
+  margin-top: 0.2rem;
 }
 
 .card-topline {
@@ -403,9 +428,9 @@ textarea:focus-visible {
 }
 
 .request-card h2 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   margin-top: 1rem;
-  max-width: 22ch;
+  max-width: 24ch;
 }
 
 .request-intro {
@@ -457,7 +482,6 @@ textarea:focus-visible {
 }
 
 .agent-context-form {
-  margin-top: 1.2rem;
   display: grid;
   gap: 0.8rem;
 }
@@ -592,26 +616,8 @@ textarea:focus-visible {
     display: flex;
   }
 
-  .hero-grid {
-    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.96fr);
-    gap: 2.4rem;
-  }
-
   .hero-form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hero-form-actions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .hero-actions .btn {
-    width: auto;
   }
 
   .steps-grid,
