@@ -56,7 +56,7 @@ function buildStageCopy(lead) {
   }
 
   if (lead.readyForMatching) {
-    return "Ya tenemos suficiente contexto para buscar opciones. Si quieres, puedes revisar proveedores ahora mismo.";
+    return "Ya tenemos suficiente contexto para buscar opciones en Ciudad de la Costa. Si quieres, puedes revisar proveedores ahora mismo.";
   }
 
   if (lead.blockingFields?.includes("zona")) {
@@ -64,7 +64,7 @@ function buildStageCopy(lead) {
   }
 
   if (lead.blockingFields?.includes("categoria")) {
-    return "Todavía necesitamos entender mejor qué tipo de ayuda encaja con tu caso antes de sugerir opciones.";
+    return "Todavía necesitamos entender mejor si tu caso encaja en plomería, barométrica o jardinería antes de sugerir opciones.";
   }
 
   return "Vamos bien. Sumando un poco más de contexto, Fixy podrá orientarte mejor.";
@@ -157,6 +157,8 @@ function renderMatches(payload) {
       <p><strong>Rubro:</strong> ${match.category}</p>
       <p><strong>Zona:</strong> ${match.zone}</p>
       <p><strong>Contacto:</strong> ${match.phone}</p>
+      <p><strong>Estado:</strong> ${match.status || "sin definir"}</p>
+      <p><strong>Origen:</strong> ${match.sourceType || "manual"}</p>
       <p><strong>Por qué aparece:</strong> ${match.reasons.join(", ")}</p>
     `;
     list.appendChild(item);

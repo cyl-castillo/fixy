@@ -13,22 +13,26 @@ Sin framework, sin build step y compatible con GitHub Pages.
 ## Qué hace
 
 - presenta Fixy como marca pública
-- enfoca la propuesta en urgencias del hogar en Montevideo
-- usa WhatsApp como canal principal
+- enfoca la propuesta en servicios urgentes del hogar en Ciudad de la Costa
+- usa el backend de Fixy como intake inicial
 - incluye CTA para clientes y proveedores
 
-## WhatsApp
+## Estado actual
 
-El número configurado está en `script.js`:
+La experiencia actual es una primera interfaz agent-ready:
+- captura el problema del usuario
+- envía el lead al backend
+- muestra qué entendió Fixy
+- permite sumar contexto adicional
+- dispara matching inicial
 
-```js
-const WHATSAPP_NUMBER = "59893551242";
-```
+## Enfoque actual del MVP
 
-Mensajes actuales:
-
-- cliente: `Hola, necesito ayuda con un problema en casa.`
-- proveedor: `Hola, quiero unirme como proveedor a Fixy.`
+- geografía: Ciudad de la Costa
+- categorías iniciales:
+  - plomería
+  - barométrica
+  - jardinería
 
 ## Deploy en GitHub Pages
 
@@ -68,8 +72,8 @@ Luego abrir:
 
 ## Próximos pasos sugeridos
 
-- agregar favicon
-- agregar metadatos Open Graph
+- evolucionar a UX más conversacional real
+- revisar copy final para lanzamiento
 - conectar analytics
 - definir dominio propio si aplica
-- revisar copy final antes de publicar
+- alinear mensaje público con supply bootstrap cuando ya esté operativo
